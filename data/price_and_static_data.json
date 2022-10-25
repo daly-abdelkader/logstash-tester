@@ -1,0 +1,63 @@
+{
+  "name": "Test price and static _ filter",
+  "filter_name": "price_and_static_filter.conf",
+  "ignore": ["@version", "@timestamp", "host", "price_fields"],
+  "cases": [{
+    "in": {
+		"sd_ch_cd_val" : "PLD UN Equity",
+		"PX_LAST" : "173.010",
+		"PX_QUOTE_LOT_SIZE" : "1.00",
+		"EXCH_MARKET_STATUS" : "ACTV",
+		"LEI_NAME" : "ProLogis Inc.",
+		"type" : "price",
+		"path" : "/path/to/inputfile",
+		"price_fields" : [
+			{
+				"field_name" : "sd_ch_cd_val"
+			},
+			{
+				"field_name" : "PX_LAST"
+			},
+			{
+				"field_name" : "PX_QUOTE_LOT_SIZE"
+			}
+		]				
+	 },
+    "out": {
+		"sd_ch_cd_val" : "PLD UN Equity",
+		"PX_LAST" : "173.010",
+		"PX_QUOTE_LOT_SIZE" : "1.00",
+		"type" : "price",
+		"path" : "/path/to/inputfile"				
+	 }
+  },
+  {
+    "in": {
+		"sd_ch_cd_val" : "PLD UN Equity",
+		"PX_LAST" : "173.010",
+		"PX_QUOTE_LOT_SIZE" : "1.00",
+		"EXCH_MARKET_STATUS" : "ACTV",
+		"LEI_NAME" : "ProLogis Inc.",
+		"path" : "/path/to/inputfile",
+		"price_fields" : [
+			{
+				"field_name" : "sd_ch_cd_val"
+			},
+			{
+				"field_name" : "PX_LAST"
+			},
+			{
+				"field_name" : "PX_QUOTE_LOT_SIZE"
+			}
+		]				
+	 },
+    "out": {
+		"sd_ch_cd_val" : "PLD UN Equity",
+		"EXCH_MARKET_STATUS" : "ACTV",
+		"LEI_NAME" : "ProLogis Inc.",
+		"type" : "static",
+		"path" : "/path/to/inputfile"				
+	 }
+  }
+  ]
+}

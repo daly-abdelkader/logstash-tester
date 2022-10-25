@@ -1,0 +1,35 @@
+{
+  "name": "Test purge useless fields filter",
+  "filter_name": "purge_useless_fields_filter.conf",
+  "ignore": ["@version", "@timestamp", "host"],
+  "cases": [{
+    "in": {
+		"sd_ch_cd_val" : "PLD UN Equity",
+		"PX_LAST" : "173.010",
+		"PX_QUOTE_LOT_SIZE" : "1.00",
+		"with_prices" : true,
+		"message": "ALL PROVIDER LINE",
+		"type" : "price",
+		"path" : "/path/to/inputfile",
+		"price_fields" : [
+			{
+				"field_name" : "sd_ch_cd_val"
+			},
+			{
+				"field_name" : "PX_LAST"
+			},
+			{
+				"field_name" : "PX_QUOTE_LOT_SIZE"
+			}
+		]				
+	 },
+    "out": {
+		"sd_ch_cd_val" : "PLD UN Equity",
+		"PX_LAST" : "173.010",
+		"PX_QUOTE_LOT_SIZE" : "1.00",
+		"type" : "price",
+		"path" : "/path/to/inputfile"				
+	 }
+  }
+  ]
+}
